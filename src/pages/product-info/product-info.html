@@ -9,12 +9,19 @@
 
 <ion-content style="color: #007db8">
   <ion-row>
-    <h4 padding>{{product.name}}</h4>
+    <h5 padding>{{product.name}}</h5>
   </ion-row>
   <ion-row>
-    <h4 padding>{{product.salePrice  | currency:'USD':true:'1.2-2'}}</h4>
+    <h5 padding>{{product.salePrice  | currency:'USD':true:'1.2-2'}} ({{product.percentSavings}}% off)</h5>
   </ion-row>
   <ion-row>
-    <h4 padding>{{product.percentSavings}}%</h4>
+    <h5 padding>{{product.longDescription}}</h5>
+  </ion-row>
+  <ion-row>
+    <h5 padding>
+      Average Customer Rating: {{product.customerReviewAverage}}/5
+      <ai-star [rating]='product.customerReviewAverage'>
+      </ai-star>
+    </h5>
   </ion-row>
 </ion-content>

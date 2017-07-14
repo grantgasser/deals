@@ -3,8 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage, PromosPage, ProductInfoPage, RecommendPage } from '../pages/pages';
-import { Service } from './shared/shared';
+import { HomePage, PromosPage, ProductInfoPage, RecommendPage, AccountPage } from '../pages/pages';
+import { Service, StarComponent } from './shared/shared';
 import { FilterPipe } from '../pipes/filterpipe';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -21,7 +21,9 @@ import { HttpModule } from '@angular/http';
     PromosPage, 
     ProductInfoPage,
     RecommendPage,
-    FilterPipe
+    FilterPipe,
+    StarComponent,
+    AccountPage
   ],
   imports: [
     BrowserModule,
@@ -34,7 +36,8 @@ import { HttpModule } from '@angular/http';
     HomePage,
     PromosPage,
     ProductInfoPage,
-    RecommendPage
+    RecommendPage,
+    AccountPage
   ],
   providers: [
     StatusBar,

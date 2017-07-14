@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { StarComponent } from '../../app/shared/star';
 
 @Component({
   selector: 'product-info',
