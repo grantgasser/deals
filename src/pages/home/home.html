@@ -9,21 +9,17 @@
 
 <ion-content padding>
   <button ion-button (click)="toBrowser()">Browser</button>
-  <button ion-button (click)="getLocation()">My Location</button>
-  <div *ngIf='location'>
-    <h5>Latitude: {{location.lat}}</h5>
-    <h5>Longitude: {{location.lng}}</h5>
-  </div>
+    <h5>Store: {{storeName}}</h5>
   <ion-searchbar placeholder="Search by Product Name"
       [(ngModel)]="myInput">
   </ion-searchbar>
 
   <ion-card *ngFor="let product of products | filter: myInput">
     <button (click)="toProductInfo($event, product)">
-      <img src="assets/images/laptop.jpg"/>
+      <img src="{{product.largeImage}}"/>
         <ion-card-content>
           <ion-card-title>
-            {{product.name}} 
+            {{product.name}}
           </ion-card-title>
           <p>
             {{product.longDescription | slice:0:30}} ...

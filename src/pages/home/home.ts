@@ -21,6 +21,8 @@ export class HomePage {
   location: { lat: number, lng: number };
   google: any;
   promises: any;
+  storeName: any;
+
 
   constructor(private nav: NavController, private myService: Service, private navParams: NavParams,
               private iab: InAppBrowser, private geolocation: Geolocation) {
@@ -55,52 +57,87 @@ getLocation(){
 
   ionViewDidLoad(){
         //this.myService.getProducts().then(data => this.products = data);
-        this.myService.getDellProds().then(data => {
-          let ret = <any>{};
-          ret = data;
-          console.log(ret);
-          var numPages = ret.totalPages;
-          console.log(numPages);
-          var products = [];
-          for (var i = 0; i < ret.products.length; i++) {
-            products.push(ret.products[i]);
-          }
-          console.log(products[0].sku.toString());
-          console.log(products);
-          this.myService.getStore(this.location.lat, this.location.lng).then(data => {
-            console.log(data);
-            var promises = [];
-            for (var j = 0; j < products.length; j++) {
-              var product = products[j];
-              //console.log(product);
-              promises.push(this.myService.getStoresWithProd(product, this.location.lat, this.location.lng));
-              var start = new Date().getTime();
-              while (new Date().getTime() < start + 1000);
+        this.geolocation.getCurrentPosition().then((resp) => {
+          this.location = {
+            lat: resp.coords.latitude,
+            lng: resp.coords.longitude
+          };
+          this.myService.getDellProds().then(data => {
+            let ret = <any>{};
+            ret = data;
+            //console.log(ret);
+            var numPages = ret.totalPages;
+            //console.log(numPages);
+            var products = [];
+            for (var i = 0; i < ret.products.length; i++) {
+              products.push(ret.products[i]);
             }
-            Promise.all(promises).then(values => {
+            var prod_promises = [];
+            for (var q = 1; q < numPages; q++) {
+              prod_promises.push(this.myService.getMoreProds(q));
+            }
+            Promise.all(prod_promises).then(values => {
               console.log(values);
-              var skus_in_stock = [];
-              for (var k = 0; k < values.length; k++) {
-                if (values[k].stores.length != 0) {
-                  var pos = values[k].canonicalUrl.search("sku=");
-                  var sku_num = values[k].canonicalUrl.substr(pos + 4, 7);
-                  skus_in_stock.push(sku_num);
-                }
+              for (var w = 0; w < values.length; w++) {
+                products = products.concat(values[w].products);
               }
-              console.log(skus_in_stock);
-              var prods_in_stock = [];
-              for (var l = 0; l < products.length; l++) {
-                for (var m = 0; m < skus_in_stock.length; m++) {
-                  if (skus_in_stock[m] === products[l].sku.toString()) {
-                    prods_in_stock.push(products[l]);
+              //console.log(products);
+              this.myService.getStore(this.location.lat, this.location.lng).then(data => {
+                //console.log(data);
+                let store = <any>{};
+                store = data;
+                if (store.stores.length == 0) {
+                  this.toBrowser();
+                  return;
+                }
+                this.storeName = store.stores[0].longName;
+                var promises = [];
+                var keys = ['dqyrzm8d558mmdvgjnbhc74m',
+                              'arscgvnmxbne2e8f868uztmc',
+                              'dvq8zsk7hqt3tbpxrtpefjaw',
+                              'wrk5y98vs5zvg85y6bjjemvn',
+                              'uke9gxh58y5pecbama3c2y5d',
+                              '63axyay97wy5uxbdwujnrmuv',
+                              '9wanu3p9627b28hg3pm3wvhd',
+                              '4mktg8p7rh6w4365eqp6v7hr',
+                              'zkudsx3guaec6x4chht8anpw'];
+                for (var j = 0; j < products.length; j++) {
+                  var product = products[j];
+                  //console.log(product);
+                  promises.push(this.myService.getStoresWithProd(product, this.location.lat, this.location.lng, keys[(j + keys.length) % keys.length]));
+                  if (j % 45 == 0) {
+                    var start = new Date().getTime();
+                    while (new Date().getTime() < start + 1000);
                   }
                 }
-              }
-              console.log(prods_in_stock);
-              this.products = prods_in_stock;
+                Promise.all(promises).then(values => {
+                  //console.log(values);
+                  var skus_in_stock = [];
+                  for (var k = 0; k < values.length; k++) {
+                    if (values[k].stores.length != 0) {
+                      var pos = values[k].canonicalUrl.search("sku=");
+                      var sku_num = values[k].canonicalUrl.substr(pos + 4, 7);
+                      skus_in_stock.push(sku_num);
+                    }
+                  }
+                  //console.log(skus_in_stock);
+                  var prods_in_stock = [];
+                  for (var l = 0; l < products.length; l++) {
+                    for (var m = 0; m < skus_in_stock.length; m++) {
+                      if (skus_in_stock[m] === products[l].sku.toString()) {
+                        prods_in_stock.push(products[l]);
+                      }
+                    }
+                  }
+                  //console.log(prods_in_stock);
+                  this.products = prods_in_stock;
+                });
+              });
             });
+
           });
         });
+
   }
 
   toProductInfo(event, product){

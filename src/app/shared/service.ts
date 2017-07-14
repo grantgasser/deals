@@ -13,7 +13,7 @@ export class Service {
     }
 
         getStore(lat, lng){
-        let store_uri = 'https://api.bestbuy.com/v1/stores((area(' + lat + ',' + lng + ',3)))?apiKey=dqyrzm8d558mmdvgjnbhc74m&show=storeId&format=json';
+        let store_uri = 'https://api.bestbuy.com/v1/stores((area(' + lat + ',' + lng + ',3)))?apiKey=dqyrzm8d558mmdvgjnbhc74m&show=storeId,longName&format=json';
         return new Promise(resolve => {
             this.http.get(`${store_uri}`)
             .subscribe(res => resolve(res.json()));
@@ -22,21 +22,21 @@ export class Service {
 
     getDellProds() {
       return new Promise(resolve => {
-        this.http.get('https://api.bestbuy.com/v1/products(manufacturer=dell&inStoreAvailability=true)?apiKey=dqyrzm8d558mmdvgjnbhc74m&sort=name.dsc&show=name,longDescription,salePrice,percentSavings,condition,features.feature,customerReviewAverage,customerReviewCount,sku&pageSize=100&format=json')
+        this.http.get('https://api.bestbuy.com/v1/products(manufacturer=dell&inStoreAvailability=true)?apiKey=dqyrzm8d558mmdvgjnbhc74m&sort=name.dsc&show=name,longDescription,salePrice,percentSavings,condition,features.feature,customerReviewAverage,customerReviewCount,sku,largeImage&pageSize=100&format=json')
           .subscribe(res => resolve(res.json()));
       })
     }
 
     getMoreProds(page) {
       return new Promise(resolve => {
-        this.http.get('https://api.bestbuy.com/v1/products(manufacturer=dell&inStoreAvailability=true)?apiKey=dqyrzm8d558mmdvgjnbhc74m&sort=name.dsc&show=name,longDescription,salePrice,percentSavings,condition,features.feature,customerReviewAverage,customerReviewCount,sku&pageSize=100&page=' + page + 'format=json')
+        this.http.get('https://api.bestbuy.com/v1/products(manufacturer=dell&inStoreAvailability=true)?apiKey=dqyrzm8d558mmdvgjnbhc74m&sort=name.dsc&show=name,longDescription,salePrice,percentSavings,condition,features.feature,customerReviewAverage,customerReviewCount,sku,largeImage&pageSize=100&page=' + page + '&format=json')
           .subscribe(res => resolve(res.json()));
       })
     }
 
-    getStoresWithProd(product, lat, lng) {
+    getStoresWithProd(product, lat, lng, key) {
       return new Promise(resolve => {
-        this.http.get('https://api.bestbuy.com/v1/stores(area(' + lat + ',' + lng + ',3))+products(sku=' + product.sku + ')?format=json&show=storeId,storeType,city,region,name,products.name,products.sku,products&pageSize=1&apiKey=dqyrzm8d558mmdvgjnbhc74m')
+        this.http.get('https://api.bestbuy.com/v1/stores(area(' + lat + ',' + lng + ',3))+products(sku=' + product.sku + ')?format=json&show=storeId,storeType,city,region,name,products.name,products.sku,products&pageSize=1&apiKey=' + key)
           .subscribe(res => resolve(res.json()));
       })
     }
