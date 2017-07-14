@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { HomePage, PromosPage, ProductInfoPage, RecommendPage } from '../pages/pages';
 import { Service } from './shared/shared';
 import { FilterPipe } from '../pipes/filterpipe';
+import { InAppBrowser } from '@ionic-native/in-app-browser';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -38,7 +39,8 @@ import { HttpModule } from '@angular/http';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Service
+    Service,
+    InAppBrowser
   ]
 })
 export class AppModule {}

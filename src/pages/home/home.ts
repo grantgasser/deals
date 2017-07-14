@@ -5,6 +5,8 @@ import { ProductInfoPage } from '../pages';
 
 import { Service } from '../../app/shared/shared';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -14,8 +16,10 @@ export class HomePage {
 
   products: any;
   myInput: string;
+  browser: any;
 
-  constructor(private nav: NavController, private myService: Service, private navParams: NavParams) {
+  constructor(private nav: NavController, private myService: Service, private navParams: NavParams,
+              private iab: InAppBrowser) {
 
   }
 
@@ -29,6 +33,10 @@ export class HomePage {
 
   toProductInfo(event, product){
     this.nav.push(ProductInfoPage, product);
+  }
+
+  toBrowser(){
+    this.browser = this.iab.create('https://deals.dell.com/','_system','location=yes, toolbar=yes, hardwareback=yes, closebuttoncaption=done');
   }
 
 }

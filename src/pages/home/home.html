@@ -8,13 +8,14 @@
 </ion-header>
 
 <ion-content padding>
+  <button ion-button (click)="toBrowser()">Browser</button>
   <ion-searchbar placeholder="Search by Product Name"
       [(ngModel)]="myInput">
   </ion-searchbar>
 
   <ion-card *ngFor="let product of products | filter: myInput">
     <button (click)="toProductInfo($event, product)">
-      <img src="../../assets/images/laptop.jpg"/>
+      <img src="assets/images/laptop.jpg"/>
         <ion-card-content>
           <ion-card-title>
             {{product.name}} 
