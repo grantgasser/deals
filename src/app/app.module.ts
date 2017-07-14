@@ -7,6 +7,7 @@ import { HomePage, PromosPage, ProductInfoPage, RecommendPage } from '../pages/p
 import { Service } from './shared/shared';
 import { FilterPipe } from '../pipes/filterpipe';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -40,7 +41,8 @@ import { HttpModule } from '@angular/http';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Service,
-    InAppBrowser
+    InAppBrowser,
+    Geolocation
   ]
 })
 export class AppModule {}

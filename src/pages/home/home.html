@@ -9,6 +9,11 @@
 
 <ion-content padding>
   <button ion-button (click)="toBrowser()">Browser</button>
+  <button ion-button (click)="getLocation()">My Location</button>
+  <div *ngIf='location'>
+    <h5>Latitude: {{location.lat}}</h5>
+    <h5>Longitude: {{location.lng}}</h5>
+  </div>
   <ion-searchbar placeholder="Search by Product Name"
       [(ngModel)]="myInput">
   </ion-searchbar>

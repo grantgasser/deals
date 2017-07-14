@@ -3,12 +3,18 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Product Info</ion-title>
+    <ion-title>Information</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-  <h3> Product Name: {{product.name}} </h3>
-  <h3> Product Price: {{product.salePrice | currency:'USD':true:'1.2-2'}} </h3>
-  <h3> Percentage Saved: {{product.percentSavings}}%</h3>
+<ion-content style="color: #007db8">
+  <ion-row>
+    <h4 padding>{{product.name}}</h4>
+  </ion-row>
+  <ion-row>
+    <h4 padding>{{product.salePrice  | currency:'USD':true:'1.2-2'}}</h4>
+  </ion-row>
+  <ion-row>
+    <h4 padding>{{product.percentSavings}}%</h4>
+  </ion-row>
 </ion-content>
