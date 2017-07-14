@@ -9,5 +9,6 @@
 
 <ion-content>
   <h3> Product Name: {{product.name}} </h3>
-  <h3> Product Price: {{product.price}} </h3>
+  <h3> Product Price: {{product.salePrice | currency:'USD':true:'1.2-2'}} </h3>
+  <h3> Percentage Saved: {{product.percentSavings}}%</h3>
 </ion-content>

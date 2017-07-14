@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-import {ProductInfoPage } from '../pages';
+import { ProductInfoPage } from '../pages';
 
 import { Service } from '../../app/shared/shared';
 
@@ -15,7 +15,7 @@ export class HomePage {
   products: any;
   myInput: string;
 
-  constructor(private nav: NavController, private myService: Service) {
+  constructor(private nav: NavController, private myService: Service, private navParams: NavParams) {
 
   }
 
@@ -25,6 +25,10 @@ export class HomePage {
 
   ionViewDidLoad(){
         this.myService.getProducts().then(data => this.products = data);
+  }
+
+  toProductInfo(event, product){
+    this.nav.push(ProductInfoPage, product);
   }
 
 }

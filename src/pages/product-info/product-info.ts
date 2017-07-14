@@ -14,4 +14,6 @@ export class ProductInfoPage {
         this.product = this.navParams.data;
     }
 
+    
+
 }

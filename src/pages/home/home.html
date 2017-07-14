@@ -13,14 +13,16 @@
   </ion-searchbar>
 
   <ion-card *ngFor="let product of products | filter: myInput">
-    <img src="../../assets/images/laptop.jpg"/>
-      <ion-card-content>
-        <ion-card-title>
-          {{product.name}}
-        </ion-card-title>
-        <p>
-          {{product.description}}
-        </p>
-    </ion-card-content>
-  </ion-card>
+    <button (click)="toProductInfo($event, product)">
+      <img src="../../assets/images/laptop.jpg"/>
+        <ion-card-content>
+          <ion-card-title>
+            {{product.name}} 
+          </ion-card-title>
+          <p>
+            {{product.longDescription | slice:0:30}} ...
+          </p>
+      </ion-card-content>
+    </button>
+    </ion-card>
 </ion-content>
