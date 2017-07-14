@@ -7,28 +7,37 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content class="card-background-page">
-   <ion-card>
-    <img src="../../assets/images/latop.jpg">
-    <div class="card-title">Laptop Promos</div>
-    <div class="card-subtitle">100,000,000,000 Listings</div>
-  </ion-card>
-
+<ion-content>
   <ion-card>
-    <img src="../../assets/images/monitors.png"/>
-    <div class="card-title">Monitor Promos</div>
-    <div class="card-subtitle">64 Listings</div>
+    <ion-card-header>
+      <button ion-item (click)="toRecommend()">
+        Recommend a friend for 5% off!
+      </button>
+    </ion-card-header>
   </ion-card>
+  <div class="card-background-page">
+    <ion-card>
+      <img src="../../assets/images/latop.jpg">
+      <div class="card-title">Laptop Promos</div>
+      <div class="card-subtitle">100,000,000,000 Listings</div>
+    </ion-card>
 
-  <ion-card>
-    <img src="../../assets/images/desktop.jpg"/>
-    <div class="card-title">Desktop Promos</div>
-    <div class="card-subtitle">72 Listings</div>
-  </ion-card>
+    <ion-card>
+      <img src="../../assets/images/monitors.png"/>
+      <div class="card-title">Monitor Promos</div>
+      <div class="card-subtitle">64 Listings</div>
+    </ion-card>
 
-  <ion-card>
-    <img src="../../assets/images/accessories.jpg"/>
-    <div class="card-title">Accessories Promos</div>
-    <div class="card-subtitle">28 Listings</div>
-  </ion-card>
+    <ion-card>
+      <img src="../../assets/images/desktop.jpg"/>
+      <div class="card-title">Desktop Promos</div>
+      <div class="card-subtitle">72 Listings</div>
+    </ion-card>
+
+    <ion-card>
+      <img src="../../assets/images/accessories.jpg"/>
+      <div class="card-title">Accessories Promos</div>
+      <div class="card-subtitle">28 Listings</div>
+    </ion-card>
+  </div>
 </ion-content>

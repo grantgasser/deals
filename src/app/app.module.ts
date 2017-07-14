@@ -3,7 +3,7 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
-import { HomePage, PromosPage, ProductInfoPage } from '../pages/pages';
+import { HomePage, PromosPage, ProductInfoPage, RecommendPage } from '../pages/pages';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,7 +13,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     PromosPage, 
-    ProductInfoPage
+    ProductInfoPage,
+    RecommendPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     PromosPage,
-    ProductInfoPage
+    ProductInfoPage,
+    RecommendPage
   ],
   providers: [
     StatusBar,

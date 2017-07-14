@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { RecommendPage } from '../pages';
+
 @Component({
   selector: 'promos',
   templateUrl: 'promos.html'
@@ -26,6 +28,10 @@ export class PromosPage {
         icon: this.icons[Math.floor(Math.random() * this.icons.length)]
       });
     }
+  }
+
+  toRecommend(){
+    this.navCtrl.push(RecommendPage);
   }
 
   itemTapped(event, item) {
