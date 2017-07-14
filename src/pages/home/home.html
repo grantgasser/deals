@@ -8,13 +8,19 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-searchbar
-      [(ngModel)]="myInput"
-      [showCancelButton]="shouldShowCancel"
-      (ionInput)="onInput($event)"
-      (ionCancel)="onCancel($event)">
-</ion-searchbar>
+  <ion-searchbar placeholder="Search by Product Name"
+      [(ngModel)]="myInput">
+  </ion-searchbar>
 
-
-  <button ion-button color="secondary" *ngFor="let product of products" (click)="itemTapped($event, product)">{{product.name}}</button>
+  <ion-card *ngFor="let product of products | filter: myInput">
+    <img src="../../assets/images/laptop.jpg"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{product.name}}
+        </ion-card-title>
+        <p>
+          {{product.description}}
+        </p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

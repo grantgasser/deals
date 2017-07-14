@@ -4,9 +4,13 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { HomePage, PromosPage, ProductInfoPage, RecommendPage } from '../pages/pages';
+import { Service } from './shared/shared';
+import { FilterPipe } from '../pipes/filterpipe';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +18,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     PromosPage, 
     ProductInfoPage,
-    RecommendPage
+    RecommendPage,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -31,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Service
   ]
 })
 export class AppModule {}

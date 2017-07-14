@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController } from 'ionic-angular';
 
-import { PromosPage, ProductInfoPage } from '../pages';
+import {ProductInfoPage } from '../pages';
+
+import { Service } from '../../app/shared/shared';
 
 @Component({
   selector: 'page-home',
@@ -10,17 +12,19 @@ import { PromosPage, ProductInfoPage } from '../pages';
 
 export class HomePage {
 
-  products = [
-    {name: 'XPS-13', price: 1000},
-    {name: 'Monitor', price: 250}
-  ]
+  products: any;
+  myInput: string;
 
-  constructor(private nav: NavController, private navParams: NavParams) {
+  constructor(private nav: NavController, private myService: Service) {
 
   }
 
   itemTapped(event, product){
     this.nav.push(ProductInfoPage, product);
+  }
+
+  ionViewDidLoad(){
+        this.myService.getProducts().then(data => this.products = data);
   }
 
 }
