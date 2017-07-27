@@ -12,7 +12,10 @@
     <h5 padding>{{product.name}}</h5>
   </ion-row>
   <ion-row>
-    <h5 padding>{{product.salePrice  | currency:'USD':true:'1.2-2'}} ({{product.percentSavings}}% off)</h5>
+    <h5 padding>
+      {{product.salePrice  | currency:'USD':true:'1.2-2'}}
+      <p *ngIf="product.percentSavings > 0"> ({{product.percentSavings}}% off!)</p>
+    </h5>
   </ion-row>
   <ion-row>
     <h5 padding>{{product.longDescription}}</h5>

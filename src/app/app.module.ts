@@ -8,6 +8,7 @@ import { Service, StarComponent } from './shared/shared';
 import { FilterPipe } from '../pipes/filterpipe';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SocialSharing } from '@ionic-native/social-sharing';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -45,7 +46,8 @@ import { HttpModule } from '@angular/http';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Service,
     InAppBrowser,
-    Geolocation
+    Geolocation,
+    SocialSharing
   ]
 })
 export class AppModule {}

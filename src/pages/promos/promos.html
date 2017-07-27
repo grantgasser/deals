@@ -9,35 +9,51 @@
 
 <ion-content>
   <ion-card>
-    <ion-card-header>
-      <button ion-item (click)="toRecommend()">
-        Recommend a friend for 5% off!
-      </button>
-    </ion-card-header>
-  </ion-card>
+  <ion-card-content>
+    <ion-card-title>
+      Share via
+     </ion-card-title>
+     <ion-row>
+       <ion-col>
+         <button (click)="shareFacebook()">
+            <ion-icon ios="logo-facebook" md="logo-facebook" style="font-size: 50px"></ion-icon>
+         </button>
+       </ion-col>
+       <ion-col>
+         <button (click)="sendEmail()">
+            <ion-icon ios="ios-mail" md="md-mail" style="font-size: 50px"></ion-icon>
+         </button>
+       </ion-col>
+       <ion-col>
+         <button (click)="sendSMS()">
+          <ion-icon ios="ios-text" md="md-text" style="font-size: 50px"></ion-icon>
+         </button>
+       </ion-col>
+     </ion-row>
+    <p style="color: #007db8">
+      Get a 15% discount on a friend's first purchase!
+    </p>
+  </ion-card-content>
+</ion-card>
   <div class="card-background-page">
     <ion-card>
       <img src="assets/images/latop.jpg">
       <div class="card-title">Laptop Promos</div>
-      <div class="card-subtitle">100,000,000,000 Listings</div>
     </ion-card>
 
     <ion-card>
-      <img src="assets/images/monitors.png"/>
+      <img src="assets/images/monitors.jpg"/>
       <div class="card-title">Monitor Promos</div>
-      <div class="card-subtitle">64 Listings</div>
     </ion-card>
 
     <ion-card>
       <img src="assets/images/desktop.jpg"/>
       <div class="card-title">Desktop Promos</div>
-      <div class="card-subtitle">72 Listings</div>
     </ion-card>
 
     <ion-card>
       <img src="assets/images/accessories.jpg"/>
       <div class="card-title">Accessories Promos</div>
-      <div class="card-subtitle">28 Listings</div>
     </ion-card>
   </div>
 </ion-content>

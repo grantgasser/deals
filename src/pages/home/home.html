@@ -15,9 +15,9 @@
       [(ngModel)]="myInput">
   </ion-searchbar>
 
-  <ion-spinner name="dots" *ngIf="!products" style="width:300px;height:300px;"></ion-spinner>
+  <ion-spinner icon="ripple" *ngIf="!products" class="spinner-assertive" style="width:100px;height:100px; margin-top: 140px; margin-left: 90px;"></ion-spinner>
   <ion-card *ngFor="let product of products | filter: myInput">
-    <button (click)="toProductInfo($event, product)">
+    <button (click)="toProductInfo($event, product)" *ngIf="!product.name.includes('Desktop')">
       <img src="{{product.largeImage}}"/>
         <ion-card-content>
           <ion-card-title>
