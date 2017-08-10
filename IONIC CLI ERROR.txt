@@ -1,0 +1,22 @@
+If Ionic CLI error: 
+
+Try these two
+npm install --save-dev --save-exact @ionic/cli-plugin-ionic-angular@latest
+npm install --save-dev --save-exact @ionic/cli-plugin-cordova@latest
+
+
+OR
+npm install --save-dev --save-exact @ionic/cli-plugin-ionic-angular@latest @ionic/cli-plugin-cordova@latest
+
+
+INAPPBROWSER
+ionic cordova plugin add cordova-plugin-inappbrowser
+npm install --save @ionic-native/in-app-browser
+
+GEOLOCATION
+ionic cordova plugin add cordova-plugin-geolocation
+npm install --save @ionic-native/geolocation
+
+SOCIAL SHARING
+ionic cordova plugin add cordova-plugin-x-socialsharing
+npm install --save @ionic-native/social-sharing
