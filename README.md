@@ -8,19 +8,20 @@ To use this template, either create a new ionic project using the ionic node.js 
 
 ### With the Ionic CLI:
 
-Take the name after `ionic2-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Install Ionic (Make sure [Node.js](https://nodejs.org/en/) LTS version is installed)
 
 ```bash
-$ sudo npm install -g ionic cordova
-$ ionic start mySideMenu sidemenu
+npm install -g cordova ionic
 ```
 
-Then, to run it, cd into `mySideMenu` and run:
+cd into the root and run either 
 
 ```bash
-$ ionic cordova platform add ios
-$ ionic cordova run ios
+ionic lab
 ```
+or 
 
-Substitute ios for android if not on a Mac.
+```bash
+ionic lab
+```
 
