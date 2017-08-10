@@ -14,7 +14,7 @@ Install Ionic (Make sure [Node.js](https://nodejs.org/en/) LTS version is instal
 npm install -g cordova ionic
 ```
 
-cd into the root and run either 
+cd into the root and run
 
 ```bash
 ionic lab
